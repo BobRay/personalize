@@ -1,0 +1,17 @@
+Changelog for Personalize.
+
+Personalize 1.0.1
+ - Updated PhpDoc comments
+ - Added Build
+ - Reorganized for Git
+ - Revolution Transport Package created
+ - MODx Revolution version
+
+Ancient History
+ - Aug 06, 07 -- replaced 2.0 code with modified version found here
+ - Aug 03, 06 -- added placeholder for username
+ - Jul 19, 06 -- hacked by kudo to output chunks
+ - Dec 01, 05 -- initial release - Ryan Thrash
+
+
+
