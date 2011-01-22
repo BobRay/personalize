@@ -4,6 +4,9 @@
  *
  * Copyright 2011 Bob Ray
  * @author Bob Ray <http://bobsguides.com>
+ * @author Ryan Thrash
+ * @author Shaun McCormick
+ * @author kudolink
  * 1/15/11
  *
  * Personalize is free software; you can redistribute it and/or modify it
@@ -56,7 +59,7 @@ $modx->setLogTarget(XPDO_CLI_MODE ? 'ECHO' : 'HTML');
 
 /* set package info */
 define('PKG_NAME','Personalize');
-define('PKG_VERSION','1.0.2');
+define('PKG_VERSION','3.0.3');
 define('PKG_RELEASE','Beta1');
 
 /* load builder */
