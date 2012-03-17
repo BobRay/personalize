@@ -1,5 +1,13 @@
 Changelog for Personalize.
 
+Personalize 3.3.0
+-----------------
+Fixed bug with users having no profile
+Fall back to username if no profile or no fullname
+Allow using no chunks and just setting placeholder
+Code cleanup and reformatting
+Created tutorial
+
 Personalize 3.2.1
 -----------------
 Fixed bug in transport package

@@ -1,0 +1,63 @@
+<p>It's common to want to treat logged-in users differently than anonymous visitors. The Personalize snippet will show one chunk to logged-in users and another to all others.</p>
+
+<h3>Installing Personalize for MODX Revolution</h3>
+<p>
+Go to System | Package Management on the main menu in the MODX Manager and click on the "Download Extras" button. That will take you to the Revolution Repository (AKA Web Transport Facility). Put Personalize in the search box and press Enter. Click on the "Download" button, and when it changes to "Downloaded," click on the "Finish" button. That should bring you back to your Package Management grid. Click on the "Install" button next to Personalize in the grid. The Personalize snippet should now be installed.</p>
+        
+<h3>Usage</h3>
+<p>Strictly speaking, none of the properties are required. Typically you will set the <fixedpre>&yesChunk</fixedpre> and <fixedpre>&noChunk</fixedpre> properties. If you just want to set the placeholder, however, you can leave them out and just set the <fixedpre>&ph</fixedpre> property. In order to have anything appear in place of the snippet tag, though, you need to create the yesChunk and noChunk chunks and specify their names in the snippet tag.</p>
+
+<pre><fixedpre>
+[[!Personalize?
+    &yesChunk=`MyYesChunk`
+    &noChunk=`MyNoChunk`
+]]
+</fixedpre></pre>
+
+<p>You can put the snippet tag in the page content or (usually better) in the template. When the page is rendered, the snippet tag will be replaced by the contents of the appropriate chunk.</p>
+
+<p>If you'd like to have the User's username appear in the yesChunk, you can tell Personalize to set a placeholder for it using the <fixedpre>&ph</fixedpre> property. The placeholder tag (see example below) will be replaced by the username.</p>
+
+<p>If you're using the placeholder and would like to use the user's full name instead, just use <fixedpre>&fullName=`1`</fixedpre> in the snippet tag.</p>
+
+<p>Note that you can also use the placeholder in other places on the page as long as they are below the Personalize snippet tag. If the snippet tag is above the <fixedpre>[[*content]]</fixedpre> tag in the template, you can use the placeholder anywhere in the page content as many times as you like. As mentioned above, you can leave out all the properties except <fixedpre>&ph</fixedpre>. Personalize will just set the placeholder and nothing will appear at the snippet tag location.</p>
+
+<h3>Example</h3>
+
+<p>Create Chunks named HelloUser and LoginLink, the first will be
+  shown to a user logged in to the current context,
+  the second to all other users.</p>
+
+<p>Put this code in the HelloUser chunk:</p>
+
+<pre><fixedpre>
+<p>Hello [[+personalize.name]]. Welcome back!</p>
+</fixedpre></pre>
+
+<p>Put this code in the LoginLink Chunk (replace <fixedpre>##</fixedpre> with the ID of your Login page):</p>
+
+<pre><fixedpre>
+<a href="[[~##]]">Log in</a>
+</fixedpre></pre>
+
+<p>Put this tag in the template or the page content where you want the output to appear:</p>
+
+<pre><fixedpre>
+[[!Personalize?
+    &yesChunk=`HelloUser`
+    &noChunk=`LoginLink`
+    &ph=`personalize.name`
+    &fullName=`1`
+]]
+</fixedpre></pre>
+
+<p>Logged in users will see the welcome message. All other users will see the Login link. The Placeholder [[+personalize.name]] will show the user's full name in the welcome message. If the user has no User Profile, or the fullname field of the Profile is empty, the snippet will fall back to the username.</p>
+
+<p>You can use any name for the placeholder tag, but be sure the placholder name specified in the snippet tag matches the one used in the yesChunk or elsewhere on the page.</p>
+
+<p>Remember that when you are previewing a page from the Manager, you are not logged in to any front-end context, so Personlized should show you the noChunk and the placeholder will not be set. If you are bouncing back and forth between the Manager and the front end, however, some versions of MODX can get confused about where you are logged in, so it's best to test the snippet using another browser where you're not logged in to the Manager.</p>
+
+<p>&nbsp;</p>
+
+
+ 

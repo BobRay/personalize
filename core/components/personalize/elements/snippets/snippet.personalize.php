@@ -69,18 +69,27 @@
  * the second to other users.
  *
  *:::::::::::::::::::::::::::::::::::::::: */
+/* @var $modx modX */
+/* @var $profile modUserProfile */
 
 /* Prepare params and variables */
 $output = '';
-$yesChunk = (isset($yesChunk))? $yesChunk : '';
-$noChunk = (isset($noChunk))? $noChunk : '';
+$sp =& $scriptProperties;
+
+$yesChunk = $modx->getOption('yesChunk',$sp, null);
+$noChunk = $modx->getOption('noChunk',$scriptProperties, null);
+$fullName = $modx->getOption('fullName', $sp, null);
+$ph = $modx->getOption('ph',$sp, null);
+
+if( !empty ($fullName) ) {
+    $profile = $modx->user->getOne('Profile');
+}
 
 /* Do the work */
  if ($modx->user->hasSessionContext($modx->context->get('key')) ) {
    $output =  $modx->getChunk($yesChunk);
-   if (isset($ph)) {
-      if ($fullName) {
-          $profile = $modx->user->getOne('Profile');
+   if (! empty($ph)) {
+      if ($fullName && $profile) {
           $modx->setPlaceholder($ph, $profile->get('fullname'));
       } else {
           $modx->setPlaceholder($ph, $modx->user->get('username'));
@@ -89,5 +98,4 @@ $noChunk = (isset($noChunk))? $noChunk : '';
 } else {
    $output = $modx->getChunk($noChunk);
 }
-
-return $output;
+return empty($output)? '': $output;
