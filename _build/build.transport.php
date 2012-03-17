@@ -59,8 +59,8 @@ $modx->setLogTarget(XPDO_CLI_MODE ? 'ECHO' : 'HTML');
 
 /* set package info */
 define('PKG_NAME','Personalize');
-define('PKG_VERSION','3.2.1');
-define('PKG_RELEASE','beta1');
+define('PKG_VERSION','3.3.0');
+define('PKG_RELEASE','pl');
 
 /* load builder */
 $modx->loadClass('transport.modPackageBuilder','',false, true);
