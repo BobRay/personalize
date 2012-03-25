@@ -1,5 +1,11 @@
 Changelog for Personalize.
 
+Personalize 3.3.1
+-----------------
+inline snippets in yesChunk and noChunk
+add property &ifIds - additional check for users ids
+noChunk now is optional
+
 Personalize 3.3.0
 -----------------
 Fixed bug with users having no profile
