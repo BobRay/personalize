@@ -94,7 +94,7 @@ $ifIds = $modx->getOption('ifIds',$sp, null);
 if( !empty ($fullName) ) {
     $profile = $modx->user->getOne('Profile');
 }
-$ifIds = empty($ifIds)? array_map('trim',explode(',',$ifIds)) : false;
+$ifIds = !empty($ifIds)? array_map('trim',explode(',',$ifIds)) : false;
 
 /* Do the work */
 if ($modx->user->hasSessionContext($modx->context->get('key')) && ( $ifIds == false  || in_array($modx->user->get('id'), $ifIds)) ) {
