@@ -5,7 +5,7 @@
 Go to System | Package Management on the main menu in the MODX Manager and click on the "Download Extras" button. That will take you to the Revolution Repository (AKA Web Transport Facility). Put Personalize in the search box and press Enter. Click on the "Download" button, and when it changes to "Downloaded," click on the "Finish" button. That should bring you back to your Package Management grid. Click on the "Install" button next to Personalize in the grid. The Personalize snippet should now be installed.</p>
         
 <h3>Usage</h3>
-<p>Strictly speaking, none of the properties are required. Typically you will set the <fixedpre>&yesChunk</fixedpre> and <fixedpre>&noChunk</fixedpre> properties. If you just want to set the placeholder, however, you can leave them out and just set the <fixedpre>&ph</fixedpre> property. In order to have anything appear in place of the snippet tag, though, you need to create the yesChunk and noChunk chunks and specify their names in the snippet tag.</p>
+<p>Strictly speaking, none of the properties are required. Typically you will set the <fixedpre>&yesChunk</fixedpre> and <fixedpre>&noChunk</fixedpre> properties. If you just want to set the placeholder, however, you can leave them out and just set the <fixedpre>&ph</fixedpre> property. In order to have anything appear in place of the snippet tag, though, you need to create the yesChunk and (optionally) noChunk chunks and specify their names in the snippet tag. As of Personalize 3.3.1, the <fixedpre>&noChunk</fixedpre> property is optional. If you leave out the <fixedpre>&noChunk</fixedpre> property, nothing will be shown to not-logged-in users.</p>
 
 <pre><fixedpre>
 [[!Personalize?
@@ -16,7 +16,7 @@ Go to System | Package Management on the main menu in the MODX Manager and click
 
 <p>You can put the snippet tag in the page content or (usually better) in the template. When the page is rendered, the snippet tag will be replaced by the contents of the appropriate chunk.</p>
 
-<p>If you'd like to have the User's username appear in the yesChunk, you can tell Personalize to set a placeholder for it using the <fixedpre>&ph</fixedpre> property. The placeholder tag (see example below) will be replaced by the username.</p>
+<p>If you'd like to have the User's username appear in the yesChunk (or elsewhere on the page), you can tell Personalize to set a placeholder for it using the <fixedpre>&ph</fixedpre> property. The placeholder tag (see example below) will be replaced by the username.</p>
 
 <p>If you're using the placeholder and would like to use the user's full name instead, just use <fixedpre>&fullName=`1`</fixedpre> in the snippet tag.</p>
 
@@ -51,9 +51,68 @@ Go to System | Package Management on the main menu in the MODX Manager and click
 ]]
 </fixedpre></pre>
 
-<p>Logged in users will see the welcome message. All other users will see the Login link. The Placeholder [[+personalize.name]] will show the user's full name in the welcome message. If the user has no User Profile, or the fullname field of the Profile is empty, the snippet will fall back to the username.</p>
+<p>Logged-in users will see the welcome message. All other users will see the Login link. The Placeholder [[+personalize.name]] will show the user's full name in the welcome message. If the user has no User Profile, or the fullname field of the Profile is empty, the snippet will fall back to the username.</p>
 
-<p>You can use any name for the placeholder tag, but be sure the placholder name specified in the snippet tag matches the one used in the yesChunk or elsewhere on the page.</p>
+<p>You can use any name for the placeholder tag, but be sure the placeholder name specified in the snippet tag matches the one used in the yesChunk or elsewhere on the page.</p>
+
+<h3>Inline HTML</h3>
+
+<p>As of personalize 3.3.1 (thanks to MODX community member Vasia123), you can specify the HTML to show to both kinds of users in the <fixedpre>&yesChunk</fixedpre> and <fixedpre>&noChunk</fixedpre> properties in the snippet tag rather than using chunks. Here's how:</p>
+
+<pre><fixedpre>
+[[!Personalize?
+    &yesChunk=`@CODE:<p>Welcome back [[+personalize.name]]</p>`
+    &noChunk=`@CODE:<p>You are not logged in</p>`
+    &ph=`personalize.name`
+]]
+</fixedpre></pre>
+
+<p>
+The <fixedpre>@CODE:</fixedpre> prefix must be the very first thing in the property string. It must be in uppercase and must be exactly as shown here, including the preceding @ sign, the following colon, and no spaces.
+</p>
+
+<h3>&amp;ifIds Property</h3>
+
+<p>Again thanks to Vasia123, the <fixedpre>&ifIds</fixedpre> property lets you specify the IDs of specific users who should see the yesChunk content. Just put a comma-separated list of IDs in the <fixedpre>&idIds</fixedpre> property and only users in the list will see the yesChunk. Everyone else will see the noChunk (or nothing if you leave out the <fixedpre>&noChunk</fixedpre> property).</p>
+
+<h3>Personalize Properties</h3>
+<table class="properties">
+    <tbody>
+    <tr>
+        <th>Property</th>
+        <th>Description</th>
+        <th>Default</th>
+    </tr>
+
+    <tr>
+        <td>yesChunk</td>
+        <td>(optional) Chunk or inline HTML to show to logged-in users</td>
+        <td>(empty)</td>
+    </tr>
+    <tr>
+        <td>noChunk</td>
+        <td>(optional) Chunk or inline HTML to show to not-logged-in-users.</td>
+        <td>(empty)</td>
+    </tr>
+    <tr>
+        <td>ph</td>
+        <td>(optional) Placeholder to set for username</td>
+        <td>(empty)</td>
+    </tr>
+    <tr>
+        <td>fullName</td>
+        <td>(optional) Use fullname rather than username for placeholder</td>
+        <td>No</td>
+    </tr>
+    <tr>
+        <td>ifIds</td>
+        <td>(optional) Comma-separated list of User IDs to show yesChunk to</td>
+        <td>(empty)</td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>Testing</h3>
 
 <p>Remember that when you are previewing a page from the Manager, you are not logged in to any front-end context, so Personlized should show you the noChunk and the placeholder will not be set. If you are bouncing back and forth between the Manager and the front end, however, some versions of MODX can get confused about where you are logged in, so it's best to test the snippet using another browser where you're not logged in to the Manager.</p>
 

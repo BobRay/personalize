@@ -43,6 +43,14 @@ $properties = array(
         'value' => '0',
         'lexicon' => 'personalize:properties',
     ),
+    array(
+            'name' => 'ifIds',
+            'desc' => 'personalize_ifIds_desc',
+            'type' => 'textfield',
+            'options' => '',
+            'value' => '',
+            'lexicon' => 'personalize:properties',
+        ),
 );
 
 return $properties;

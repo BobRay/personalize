@@ -10,20 +10,22 @@ core/components/personalize/elements/snippets/personalize.inc.php
 **Bugs and Requests:** [GitHub](https://github.com/BobRay/Personalize/issues)
 
 A simple snippet for MODx Revolution showing one chunk to logged-in users and
-another chunk to anonymous users.
+another chunk (or nothing) to anonymous users.
 
-##Minimal Snippet Call
+##Typical Snippet Call
 
 
      [[!Personalize? &yesChunk=`yesChunk` &noChunk=`noChunk`]]
 
 ##Parameters
 
-    &yesChunk  -- (required) Name of yes chunk.
+    &yesChunk  -- (optional) Name of yes chunk or inline HTML.
 
-    &noChunk   -- (required) Name of no chunk.
+    &noChunk   -- (optional) Name of no chunk or inline HTML.
 
-    &ph        -- (optional) placeholder for user name (will not be available in no chunk.
+    &ph        -- (optional) placeholder for user name (will not be available in no chunk).
 
     &fullName  -- (optional) Use full name instead of username for placehoder
+
+    &ifIds     -- (optional) Comma-separated list of users to show yesChunk to
 

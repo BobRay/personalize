@@ -33,6 +33,7 @@ $_lang['personalize_yeschunk_desc'] = '(REQUIRED) Name of chunk to show for LOGG
 $_lang['personalize_nochunk_desc'] = '(REQUIRED) Name of chunk to show for *not* LOGGED-in users.';
 $_lang['personalize_ph_desc'] = '(optional) Placeholder for username; will not be available in noChunk.';
 $_lang['personalize_fullname_desc'] = '(optional) If set to yes, use full name instead of username in placeholder; default: No';
+$_lang['personalize_ifIds_desc'] = '(optional) Comma-separated list of User IDs; If set, yesChunk will only be shown to users in the list; default: (empty)';
 
 
 

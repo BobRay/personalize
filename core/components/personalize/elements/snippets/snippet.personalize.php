@@ -27,10 +27,10 @@
  * Properties
  *
  *    @property yesChunk string (REQUIRED) Name of chunk or
- *        inline chunk to show for LOGGED-in users
+ *        inline HTML to show for LOGGED-in users
  *
  *    @property noChunk string (optional) Name of chunk or
- *        inline chunk to show for NOT logged-in users
+ *        inline HTML to show for NOT logged-in users
  *
  *    @property ph string (optional) Placeholder for placing
  *        the username
@@ -40,7 +40,8 @@
  *        instead of username in placeholder
  *
  *    @property ifIds string (optional) comma separated 
- *        list of users ids
+ *        list of users ids; yesChunk will only be shown
+ *        to users in the list
  *
  */
 /* Personalize Snippet for Revolution */
@@ -98,23 +99,23 @@ $ifIds = !empty($ifIds)? array_map('trim',explode(',',$ifIds)) : false;
 
 /* Do the work */
 if ($modx->user->hasSessionContext($modx->context->get('key')) && ( $ifIds == false  || in_array($modx->user->get('id'), $ifIds)) ) {
-	if (preg_match('/^@CODE:/',$yesChunk)) {
-		$output =  substr($yesChunk, 6);
-	} else {
-		$output =  $modx->getChunk($yesChunk, $scriptProperties);
-	}
-	if (! empty($ph)) {
-		if ($fullName && $profile) {
-			$modx->setPlaceholder($ph, $profile->get('fullname'));
-		} else {
-			$modx->setPlaceholder($ph, $modx->user->get('username'));
-		}
-	}
+    if (preg_match('/^@CODE:/',$yesChunk)) {
+        $output =  substr($yesChunk, 6);
+    } else {
+        $output =  $modx->getChunk($yesChunk, $scriptProperties);
+    }
+    if (! empty($ph)) {
+        if ($fullName && $profile) {
+            $modx->setPlaceholder($ph, $profile->get('fullname'));
+        } else {
+            $modx->setPlaceholder($ph, $modx->user->get('username'));
+        }
+    }
 } elseif( !empty ($noChunk) ) {
-	if (preg_match('/^@CODE:/',$noChunk)) {
-		$output =  substr($noChunk, 6);
-	} else {
-		$output =  $modx->getChunk($noChunk);
-	}
+    if (preg_match('/^@CODE:/',$noChunk)) {
+        $output =  substr($noChunk, 6);
+    } else {
+        $output =  $modx->getChunk($noChunk);
+    }
 }
 return empty($output)? '': $output;
