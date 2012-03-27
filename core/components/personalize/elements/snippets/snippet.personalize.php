@@ -66,13 +66,14 @@
  *         &ph=`name`
  *     ]]
  *
- * ADDED in 3.3.1:
+ * ADDED in 3.3.1 by Vasia123:
  *    
  *    1. &noChunk=`@CODE:<b>Please login!</b>` - inline snippets
- *    2. &ifIds=`1,3` - additional check for users ids
+ *    2. &ifIds=`1,3` - additional check for users ids. yeschunk will
+ *         only be shown to users in the list.
  *    
  *    
- * Placeholder [[+name]] will show the user's name in the yesChunk.
+ * Placeholder [[+name]] will show the user's name in the yesChunk or elsewhere on the page.
  *
  * Create Chunks named HelloUser and Register, the first will be
  * shown to a user logged on in the current context,

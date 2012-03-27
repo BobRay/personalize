@@ -5,7 +5,7 @@
 Go to System | Package Management on the main menu in the MODX Manager and click on the "Download Extras" button. That will take you to the Revolution Repository (AKA Web Transport Facility). Put Personalize in the search box and press Enter. Click on the "Download" button, and when it changes to "Downloaded," click on the "Finish" button. That should bring you back to your Package Management grid. Click on the "Install" button next to Personalize in the grid. The Personalize snippet should now be installed.</p>
         
 <h3>Usage</h3>
-<p>Strictly speaking, none of the properties are required. Typically you will set the <fixedpre>&yesChunk</fixedpre> and <fixedpre>&noChunk</fixedpre> properties. If you just want to set the placeholder, however, you can leave them out and just set the <fixedpre>&ph</fixedpre> property. In order to have anything appear in place of the snippet tag, though, you need to create the yesChunk and (optionally) noChunk chunks and specify their names in the snippet tag. As of Personalize 3.3.1, the <fixedpre>&noChunk</fixedpre> property is optional. If you leave out the <fixedpre>&noChunk</fixedpre> property, nothing will be shown to not-logged-in users.</p>
+<p>Strictly speaking, none of the properties are required. Typically you will set the <fixedpre>&yesChunk</fixedpre> and <fixedpre>&noChunk</fixedpre> properties. If you just want to set the placeholder, however, you can leave them out and just set the <fixedpre>&ph</fixedpre> property. In order to have anything appear in place of the snippet tag, though, you need to create the yesChunk and (optionally) noChunk chunks and specify their names in the snippet tag. As of Personalize 3.4.0, the <fixedpre>&noChunk</fixedpre> property is optional. If you leave out the <fixedpre>&noChunk</fixedpre> property, nothing will be shown to not-logged-in users.</p>
 
 <pre><fixedpre>
 [[!Personalize?
@@ -57,7 +57,7 @@ Go to System | Package Management on the main menu in the MODX Manager and click
 
 <h3>Inline HTML</h3>
 
-<p>As of personalize 3.3.1 (thanks to MODX community member Vasia123), you can specify the HTML to show to both kinds of users in the <fixedpre>&yesChunk</fixedpre> and <fixedpre>&noChunk</fixedpre> properties in the snippet tag rather than using chunks. Here's how:</p>
+<p>As of personalize 3.4.0 (thanks to MODX community member Vasia123), you can specify the HTML to show to both kinds of users in the <fixedpre>&yesChunk</fixedpre> and <fixedpre>&noChunk</fixedpre> properties in the snippet tag rather than using chunks. Here's how:</p>
 
 <pre><fixedpre>
 [[!Personalize?

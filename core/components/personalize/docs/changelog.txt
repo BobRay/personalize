@@ -1,7 +1,8 @@
 Changelog for Personalize.
 
-Personalize 3.3.1
+Personalize 3.4.0
 -----------------
+(updates by Vasia123)
 inline HTML with @CODE: in yesChunk and noChunk
 add property &ifIds - shows yesChunk only to users in list
 noChunk now is optional
