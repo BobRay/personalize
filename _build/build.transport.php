@@ -49,6 +49,12 @@ $sources= array (
 );
 unset($root);
 
+/* avoid E_NOTICE warnings */
+define ('MODX_BASE_URL', '');
+define ('MODX_MANAGER_URL', '');
+define ('MODX_ASSETS_URL', '');
+define ('MODX_CONNECTORS_URL', '');
+
 /* instantiate MODx */
 require_once $sources['build'].'build.config.php';
 require_once MODX_CORE_PATH . 'model/modx/modx.class.php';
