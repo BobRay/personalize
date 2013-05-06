@@ -38,6 +38,9 @@
  *
  *    @property fullName boolean (optional) Use full name
  *        instead of username in placeholder
+ *  
+ *    @property firstName boolean (optional) Show only the
+ *        first part of the fullname. (i.e. Bob Ray == Bob)
  *
  *    @property ifIds string (optional) comma separated 
  *        list of users ids; yesChunk will only be shown
@@ -90,6 +93,7 @@ $sp =& $scriptProperties;
 $yesChunk = $modx->getOption('yesChunk',$sp, null);
 $noChunk = $modx->getOption('noChunk',$scriptProperties, null);
 $fullName = $modx->getOption('fullName', $sp, null);
+$firstName = $modx->getOption('firstName',$scriptProperties, 0);
 $ph = $modx->getOption('ph',$sp, null);
 $ifIds = $modx->getOption('ifIds',$sp, null);
 
@@ -107,7 +111,11 @@ if ($modx->user->hasSessionContext($modx->context->get('key')) && ( $ifIds == fa
     }
     if (! empty($ph)) {
         if ($fullName && $profile) {
-            $modx->setPlaceholder($ph, $profile->get('fullname'));
+            $thename = $profile->get('fullname');
+			if ($firstName) {
+				$thename = (strstr($thename, ' ') ? strstr($thename, ' ',true) : $thename);
+			}
+			$modx->setPlaceholder($ph, $thename);
         } else {
             $modx->setPlaceholder($ph, $modx->user->get('username'));
         }
