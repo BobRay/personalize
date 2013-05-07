@@ -90,6 +90,7 @@ $sp =& $scriptProperties;
 $yesChunk = $modx->getOption('yesChunk',$sp, null);
 $noChunk = $modx->getOption('noChunk',$scriptProperties, null);
 $fullName = $modx->getOption('fullName', $sp, null);
+$firstName = $modx->getOption('firstName', $sp, null);
 $ph = $modx->getOption('ph',$sp, null);
 $ifIds = $modx->getOption('ifIds',$sp, null);
 
@@ -107,10 +108,15 @@ if ($modx->user->hasSessionContext($modx->context->get('key')) && ( $ifIds == fa
     }
     if (! empty($ph)) {
         if ($fullName && $profile) {
-            $modx->setPlaceholder($ph, $profile->get('fullname'));
+            $name = trim($profile->get('fullname'));
+        } elseif ($firstName && $profile) {
+            $full = trim($profile->get('fullname'));
+            $pos = strpos($full, ' ');
+            $name = ($pos === false) ? $full : substr($full, 0, $pos);
         } else {
-            $modx->setPlaceholder($ph, $modx->user->get('username'));
+            $name = $modx->user->get('username');
         }
+        $modx->setPlaceholder($ph, $name);
     }
 } elseif( !empty ($noChunk) ) {
     if (preg_match('/^@CODE:/',$noChunk)) {

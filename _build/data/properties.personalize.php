@@ -44,6 +44,14 @@ $properties = array(
         'lexicon' => 'personalize:properties',
     ),
     array(
+        'name' => 'firstName',
+        'desc' => 'personalize_firstname_desc',
+        'type' => 'combo-boolean',
+        'options' => '',
+        'value' => '0',
+        'lexicon' => 'personalize:properties',
+    ),
+    array(
             'name' => 'ifIds',
             'desc' => 'personalize_ifIds_desc',
             'type' => 'textfield',

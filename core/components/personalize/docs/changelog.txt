@@ -1,5 +1,10 @@
 Changelog for Personalize.
 
+Personalize 3.5.0
+-----------------
+(updates by Jared Loman)
+Added &firstName placeholder option
+
 Personalize 3.4.0
 -----------------
 (updates by Vasia123)

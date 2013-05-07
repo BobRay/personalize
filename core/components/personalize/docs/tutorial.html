@@ -18,7 +18,7 @@ Go to System | Package Management on the main menu in the MODX Manager and click
 
 <p>If you'd like to have the User's username appear in the yesChunk (or elsewhere on the page), you can tell Personalize to set a placeholder for it using the <fixedpre>&ph</fixedpre> property. The placeholder tag (see example below) will be replaced by the username.</p>
 
-<p>If you're using the placeholder and would like to use the user's full name instead, just use <fixedpre>&fullName=`1`</fixedpre> in the snippet tag.</p>
+<p>If you're using the placeholder and would like to use the user's full name instead, just use <fixedpre>&fullName=`1`</fixedpre> in the snippet tag. If you would like to use the first name for the placeholder, use <fixedpre>&firstName=`1`</fixedpre>.</p>
 
 <p>Note that you can also use the placeholder in other places on the page as long as they are below the Personalize snippet tag. If the snippet tag is above the <fixedpre>[[*content]]</fixedpre> tag in the template, you can use the placeholder anywhere in the page content as many times as you like. As mentioned above, you can leave out all the properties except <fixedpre>&ph</fixedpre>. Personalize will just set the placeholder and nothing will appear at the snippet tag location.</p>
 
@@ -102,6 +102,11 @@ The <fixedpre>@CODE:</fixedpre> prefix must be the very first thing in the prope
     <tr>
         <td>fullName</td>
         <td>(optional) Use fullname rather than username for placeholder</td>
+        <td>No</td>
+    </tr>
+    <tr>
+        <td>firstName</td>
+        <td>(optional) Use firstName rather than username for placeholder</td>
         <td>No</td>
     </tr>
     <tr>

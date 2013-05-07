@@ -26,5 +26,7 @@ another chunk (or nothing) to anonymous users.
 
     &fullName  -- (optional) Use full name instead of username for placeholder
 
+    &firstName -- (optional) Use first name instead of username for placeholder
+
     &ifIds     -- (optional) Comma-separated list of users to show yesChunk to
 
