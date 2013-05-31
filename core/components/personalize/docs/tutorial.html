@@ -5,7 +5,8 @@
 Go to System | Package Management on the main menu in the MODX Manager and click on the "Download Extras" button. That will take you to the Revolution Repository (AKA Web Transport Facility). Put Personalize in the search box and press Enter. Click on the "Download" button, and when it changes to "Downloaded," click on the "Finish" button. That should bring you back to your Package Management grid. Click on the "Install" button next to Personalize in the grid. The Personalize snippet should now be installed.</p>
         
 <h3>Usage</h3>
-<p>Strictly speaking, none of the properties are required. Typically you will set the <fixedpre>&yesChunk</fixedpre> and <fixedpre>&noChunk</fixedpre> properties. If you just want to set the placeholder, however, you can leave them out and just set the <fixedpre>&ph</fixedpre> property. In order to have anything appear in place of the snippet tag, though, you need to create the yesChunk and (optionally) noChunk chunks and specify their names in the snippet tag. As of Personalize 3.4.0, the <fixedpre>&noChunk</fixedpre> property is optional. If you leave out the <fixedpre>&noChunk</fixedpre> property, nothing will be shown to not-logged-in users.</p>
+<p>Strictly speaking, none of the properties are required. Typically you will set the <fixedpre>&yesChunk</fixedpre> and <fixedpre>&noChunk</fixedpre> properties. If you just want to set the placeholder, however, you can leave them out and just set the <fixedpre>&ph</fixedpre> property. In order to have anything appear in place of the snippet tag, though, you need to create the <fixedpre>
+    yesChunk</fixedpre> and (optionally) the noChunk chunks and specify their names in the snippet tag. As of Personalize 3.4.0, the <fixedpre>&noChunk</fixedpre> property is optional. If you leave out the <fixedpre>&noChunk</fixedpre> property, nothing will be shown to not-logged-in users.</p>
 
 <pre><fixedpre>
 [[!Personalize?
@@ -16,7 +17,7 @@ Go to System | Package Management on the main menu in the MODX Manager and click
 
 <p>You can put the snippet tag in the page content or (usually better) in the template. When the page is rendered, the snippet tag will be replaced by the contents of the appropriate chunk.</p>
 
-<p>If you'd like to have the User's username appear in the yesChunk (or elsewhere on the page), you can tell Personalize to set a placeholder for it using the <fixedpre>&ph</fixedpre> property. The placeholder tag (see example below) will be replaced by the username.</p>
+<p>If you'd like to have the User's username appear in the <fixedpre>yesChunk</fixedpre> (or elsewhere on the page), you can tell Personalize to set a placeholder for it using the <fixedpre>&ph</fixedpre> property. The placeholder tag (see example below) will be replaced by the username.</p>
 
 <p>If you're using the placeholder and would like to use the user's full name instead, just use <fixedpre>&fullName=`1`</fixedpre> in the snippet tag. If you would like to use the first name for the placeholder, use <fixedpre>&firstName=`1`</fixedpre>.</p>
 
@@ -24,11 +25,11 @@ Go to System | Package Management on the main menu in the MODX Manager and click
 
 <h3>Example</h3>
 
-<p>Create Chunks named HelloUser and LoginLink, the first will be
+<p>Create Chunks named <fixedpre>HelloUser</fixedpre> and <fixedpre>LoginLink</fixedpre>, the first will be
   shown to a user logged in to the current context,
   the second to all other users.</p>
 
-<p>Put this code in the HelloUser chunk:</p>
+<p>Put this code in the <fixedpre>HelloUser</fixedpre> chunk:</p>
 
 <pre><fixedpre>
 <p>Hello [[+personalize.name]]. Welcome back!</p>
@@ -73,7 +74,32 @@ The <fixedpre>@CODE:</fixedpre> prefix must be the very first thing in the prope
 
 <h3>&amp;ifIds Property</h3>
 
-<p>Again thanks to Vasia123, the <fixedpre>&ifIds</fixedpre> property lets you specify the IDs of specific users who should see the yesChunk content. Just put a comma-separated list of IDs in the <fixedpre>&idIds</fixedpre> property and only users in the list will see the yesChunk. Everyone else will see the noChunk (or nothing if you leave out the <fixedpre>&noChunk</fixedpre> property).</p>
+<p>Again thanks to Vasia123, the <fixedpre>&ifIds</fixedpre> property lets you specify the IDs of specific users who should see the <fixedpre>
+    yesChunk</fixedpre> content. Just put a comma-separated list of IDs in the <fixedpre>&ifIds</fixedpre> property and only users in the list will see the yesChunk. Everyone else will see the <fixedpre>
+    noChunk</fixedpre> (or nothing if you leave out the <fixedpre>&noChunk</fixedpre> property).</p>
+
+<h3>&amp;allowedGroups Property</h3>
+
+<p>Another addition by Vasia123, the <fixedpre>&allowedGroups</fixedpre>
+property lets you specify the names of groups the user must belong to in order to see the <fixedpre>yesChunk</fixedpre> content. Just put a comma-separated list of User Group names in the
+<fixedpre>&allowedGroups</fixedpre> property and only users in the list will see the <fixedpre>yesChunk</fixedpre>. Everyone else will see the <fixedpre>noChunk</fixedpre> (or nothing if you leave out the
+<fixedpre>&noChunk</fixedpre> property).</p>
+
+<h3>Combining Options</h3>
+        
+<p>Here's what happens if you use the various selection properties alone or together:</p>
+        
+<ul>        
+<li>If you use the snippet without the <fixedpre>&ifIds</fixedpre> and <fixedpre>&allowedGroups</fixedpre> properties, any logged-in user will see the <fixedpre>yesChunk</fixedpre>.
+
+<li>If you use the <fixedpre>&ifIds</fixedpre> property alone, only logged-in users who are in the ID list will see the <fixedpre>yesChunk</fixedpre>.</li>
+
+<li>If you use the <fixedpre>&allowedGroups</fixedpre> property alone, only logged-in users who belong to one or more of the allowed groups will see the <fixedpre>yesChunk</fixedpre>.</li>
+
+<li>If you use *both* the <fixedpre>&ifIds</fixedpre> and <fixedpre>&allowedGroups</fixedpre> properties</li>, only logged in users who meet both criteria will see the <fixedpre>yesChunk</fixedpre>.
+
+</ul>
+        
 
 <h3>Personalize Properties</h3>
 <table class="properties">
@@ -114,12 +140,17 @@ The <fixedpre>@CODE:</fixedpre> prefix must be the very first thing in the prope
         <td>(optional) Comma-separated list of User IDs to show yesChunk to</td>
         <td>(empty)</td>
     </tr>
+    <tr>
+        <td>allowedGroups</td>
+        <td>(optional) Comma-separated list of User Groups to show yesChunk to</td>
+        <td>(empty)</td>
+    </tr>
     </tbody>
 </table>
 
 <h3>Testing</h3>
 
-<p>Remember that when you are previewing a page from the Manager, you are not logged in to any front-end context, so Personlized should show you the noChunk and the placeholder will not be set. If you are bouncing back and forth between the Manager and the front end, however, some versions of MODX can get confused about where you are logged in, so it's best to test the snippet using another browser where you're not logged in to the Manager.</p>
+<p>Remember that when you are previewing a page from the Manager, you are not logged in to any front-end context, so Personalized should show you the <fixedpre>noChunk</fixedpre> and the placeholder will not be set. If you are bouncing back and forth between the Manager and the front end, however, some versions of MODX can get confused about where you are logged in, so it's best to test the snippet using another browser where you're not logged in to the Manager.</p>
 
 <p>&nbsp;</p>
 
