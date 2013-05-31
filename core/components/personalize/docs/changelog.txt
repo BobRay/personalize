@@ -1,5 +1,10 @@
 Changelog for Personalize.
 
+Personalize 3.6.0
+-----------------
+(updates by Vasia123)
+Added &allowedGroups option
+
 Personalize 3.5.0
 -----------------
 (updates by Jared Loman)

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Personalize snippet for MODx Revolution
  *
@@ -43,6 +42,10 @@
  *        list of users ids; yesChunk will only be shown
  *        to users in the list
  *
+ *    @property allowedGroups string (optional) comma separated 
+ *        list of allowed groups; yesChunk will only only shows 
+ *        users are in one of these groups
+ *
  */
 /* Personalize Snippet for Revolution */
 
@@ -72,6 +75,10 @@
  *    2. &ifIds=`1,3` - additional check for users ids. yeschunk will
  *         only be shown to users in the list.
  *    
+ * ADDED in 3.6.0 by Vasia123:
+ *    
+ *    1. &allowedGroups=`Moderators,Admins` - check if user is in any of this groups
+ *    
  *    
  * Placeholder [[+name]] will show the user's name in the yesChunk or elsewhere on the page.
  *
@@ -93,14 +100,32 @@ $fullName = $modx->getOption('fullName', $sp, null);
 $firstName = $modx->getOption('firstName', $sp, null);
 $ph = $modx->getOption('ph',$sp, null);
 $ifIds = $modx->getOption('ifIds',$sp, null);
+$allowedGroups = $modx->getOption('allowedGroups',$sp, null);
 
 if( !empty ($fullName) ) {
     $profile = $modx->user->getOne('Profile');
 }
-$ifIds = !empty($ifIds)? array_map('trim',explode(',',$ifIds)) : false;
+
+// check if user logged in
+$is_logged_in = $modx->user->hasSessionContext($modx->context->get('key'));
+
+// check if user id is allowed
+$ifIds = array_filter(array_map('trim',explode(',',$ifIds)));
+$ifIds = (!empty($ifIds)) ? in_array($modx->user->get('id'), $ifIds) : true;
+
+// check if user is member of allowed groups
+$groups = array_filter(array_map('trim',explode(',',$allowedGroups)));
+if (!empty($groups)) {
+    $inGroups = false;
+    foreach($groups as $group) {
+        if ($modx->user->isMember($group)) $inGroups = true;
+    }
+} else {
+    $inGroups = true;
+}
 
 /* Do the work */
-if ($modx->user->hasSessionContext($modx->context->get('key')) && ( $ifIds == false  || in_array($modx->user->get('id'), $ifIds)) ) {
+if ($is_logged_in && $ifIds && $inGroups) {
     if (preg_match('/^@CODE:/',$yesChunk)) {
         $output =  substr($yesChunk, 6);
     } else {
