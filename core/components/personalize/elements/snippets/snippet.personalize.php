@@ -69,22 +69,25 @@
  *         &ph=`name`
  *     ]]
  *
- * ADDED in 3.3.1 by Vasia123:
- *    
- *    1. &noChunk=`@CODE:<b>Please login!</b>` - inline snippets
- *    2. &ifIds=`1,3` - additional check for users ids. yeschunk will
- *         only be shown to users in the list.
- *    
- * ADDED in 3.6.0 by Vasia123:
- *    
- *    1. &allowedGroups=`Moderators,Admins` - check if user is in any of this groups
- *    
- *    
- * Placeholder [[+name]] will show the user's name in the yesChunk or elsewhere on the page.
- *
  * Create Chunks named HelloUser and Register, the first will be
  * shown to a user logged on in the current context,
  * the second to other users.
+ *
+ * ADDED in 3.3.1 by Vasia123:
+ *    
+ *    1. &noChunk=`@CODE:<b>Please login!</b>` - inline snippets
+ *    2. &ifIds=`1,3` - additional check for users ids. yesChunk will
+ *         only be shown to logged-in users in the list.
+ *    
+ * ADDED in 3.6.0 by Vasia123:
+ *    
+ *    1. &allowedGroups=`Editor,Administrator` - check if user is
+ *       in any allowed group
+ *    
+ *    
+ * Placeholder [[+name]] will show the user's name in the yesChunk or
+ * elsewhere on the page.
+ *
  *
  *:::::::::::::::::::::::::::::::::::::::: */
 /* @var $modx modX */
@@ -106,14 +109,14 @@ if( !empty ($fullName) ) {
     $profile = $modx->user->getOne('Profile');
 }
 
-// check if user logged in
+/* check if user logged in */
 $is_logged_in = $modx->user->hasSessionContext($modx->context->get('key'));
 
-// check if user id is allowed
+/* Set $ifIds to true if user id is allowed or ifIds is not set */
 $ifIds = array_filter(array_map('trim',explode(',',$ifIds)));
 $ifIds = (!empty($ifIds)) ? in_array($modx->user->get('id'), $ifIds) : true;
 
-// check if user is member of allowed groups
+// Set $groups to true is use in in allowed group or $groups is not set
 $groups = array_filter(array_map('trim',explode(',',$allowedGroups)));
 if (!empty($groups)) {
     $inGroups = false;
