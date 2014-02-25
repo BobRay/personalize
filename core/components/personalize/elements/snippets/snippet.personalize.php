@@ -93,6 +93,7 @@ $fullName = $modx->getOption('fullName', $sp, null);
 $firstName = $modx->getOption('firstName', $sp, null);
 $ph = $modx->getOption('ph',$sp, null);
 $ifIds = $modx->getOption('ifIds',$sp, null);
+$emailPh = $modx->getOption('emailPh', $scriptProperties, 'email');
 
 if( !empty ($fullName) ) {
     $profile = $modx->user->getOne('Profile');
@@ -117,6 +118,8 @@ if ($modx->user->hasSessionContext($modx->context->get('key')) && ( $ifIds == fa
             $name = $modx->user->get('username');
         }
         $modx->setPlaceholder($ph, $name);
+
+        $modx->setPlaceholder($emailPh, $profile->get('email'));
     }
 } elseif( !empty ($noChunk) ) {
     if (preg_match('/^@CODE:/',$noChunk)) {
