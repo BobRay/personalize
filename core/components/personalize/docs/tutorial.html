@@ -145,12 +145,17 @@ property lets you specify the names of groups the user must belong to in order t
         <td>(optional) Comma-separated list of User Groups to show yesChunk to</td>
         <td>(empty)</td>
     </tr>
+    <tr>
+        <td>context</td>
+        <td>(optional) Context user must be logged into to see the yesChunk</td>
+        <td>(current context)</td>
+    </tr>
     </tbody>
 </table>
 
 <h3>Testing</h3>
 
-<p>Remember that when you are previewing a page from the Manager, you are not logged in to any front-end context, so Personalized should show you the <code>noChunk</code> and the placeholder will not be set. If you are bouncing back and forth between the Manager and the front end, however, some versions of MODX can get confused about where you are logged in, so it's best to test the snippet using another browser where you're not logged in to the Manager.</p>
+<p>Remember that when you are previewing a page from the Manager, you are not logged in to any front-end context, so Personalize should show you the <code>noChunk</code> and the placeholder will not be set. If you are bouncing back and forth between the Manager and the front end, however, some versions of MODX can get confused about where you are logged in, so it's best to test the snippet using another browser where you're not logged in to the Manager.</p>
 
 <p>&nbsp;</p>
 

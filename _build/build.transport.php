@@ -2,7 +2,7 @@
 /**
  * Personalize
  *
- * Copyright 2011 Bob Ray
+ * Copyright 2011-2014 Bob Ray
  * @author Bob Ray <http://bobsguides.com>
  * @author Ryan Thrash
  * @author Shaun McCormick
@@ -65,7 +65,7 @@ $modx->setLogTarget(XPDO_CLI_MODE ? 'ECHO' : 'HTML');
 
 /* set package info */
 define('PKG_NAME','Personalize');
-define('PKG_VERSION','3.6.0');
+define('PKG_VERSION','3.7.0');
 define('PKG_RELEASE','pl');
 
 /* load builder */

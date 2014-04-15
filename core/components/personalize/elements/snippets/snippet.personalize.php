@@ -46,6 +46,11 @@
  *        list of allowed groups; yesChunk will only only shows 
  *        users are in one of these groups
  *
+ *    @property context (optional) context the user must be
+ *        logged in to to see the yesChunk; defaults to
+ *        current context.
+ *
+ *
  */
 /* Personalize Snippet for Revolution */
 
@@ -104,13 +109,14 @@ $firstName = $modx->getOption('firstName', $sp, null);
 $ph = $modx->getOption('ph',$sp, null);
 $ifIds = $modx->getOption('ifIds',$sp, null);
 $allowedGroups = $modx->getOption('allowedGroups',$sp, null);
+$context = $modx->getOption('context', $sp, $modx->context->get('key') );
 
 if( !empty ($fullName) ) {
     $profile = $modx->user->getOne('Profile');
 }
 
 /* check if user logged in */
-$is_logged_in = $modx->user->hasSessionContext($modx->context->get('key'));
+$is_logged_in = $modx->user->hasSessionContext($context);
 
 /* Set $ifIds to true if user id is allowed or ifIds is not set */
 $ifIds = array_filter(array_map('trim',explode(',',$ifIds)));
