@@ -104,14 +104,14 @@ $sp =& $scriptProperties;
 
 $yesChunk = $modx->getOption('yesChunk',$sp, null);
 $noChunk = $modx->getOption('noChunk',$scriptProperties, null);
-$fullName = $modx->getOption('fullName', $sp, null);
-$firstName = $modx->getOption('firstName', $sp, null);
+$fullName = (bool) $modx->getOption('fullName', $sp, false);
+$firstName = (bool) $modx->getOption('firstName', $sp, false);
 $ph = $modx->getOption('ph',$sp, null);
 $ifIds = $modx->getOption('ifIds',$sp, null);
 $allowedGroups = $modx->getOption('allowedGroups',$sp, null);
 $context = $modx->getOption('context', $sp, $modx->context->get('key') );
 
-if( !empty ($fullName) ) {
+if( $fullName || $firstName ) {
     $profile = $modx->user->getOne('Profile');
 }
 
