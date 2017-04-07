@@ -1,5 +1,9 @@
 Changelog for Personalize.
 
+Personalize 3.7.1-pl
+-----------------
+Fix bug with First Name option
+
 Personalize 3.7.0-pl
 -----------------
 Added &context property (thanks to Josef Vavrina)
