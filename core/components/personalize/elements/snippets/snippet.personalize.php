@@ -1,6 +1,6 @@
 <?php
 /**
- * Personalize snippet for MODx Revolution
+ * Personalize snippet for MODX Revolution
  *
  * Personalize is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free
@@ -18,7 +18,7 @@
  * @package personalize
  */
 /**
- * MODx Personalize Snippet
+ * MODX Personalize Snippet
  *
  *
  * @package personalize

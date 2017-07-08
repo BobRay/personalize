@@ -2,7 +2,7 @@
 /**
  * QuickEmail
  *
- * Copyright 2010 by Bob Ray <http://bobsguides.com>
+ * Copyright 2010-2017 Bob Ray <https://bobsguides.com>
  * 1/16/2011
  *
  * QuickEmail is free software; you can redistribute it and/or modify it

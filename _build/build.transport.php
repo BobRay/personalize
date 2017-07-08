@@ -2,8 +2,8 @@
 /**
  * Personalize
  *
- * Copyright 2011-2014 Bob Ray
- * @author Bob Ray <http://bobsguides.com>
+ * Copyright 2011-2017 Bob Ray
+ * @author Bob Ray <https://bobsguides.com>
  * @author Ryan Thrash
  * @author Shaun McCormick
  * @author kudolink
@@ -55,7 +55,7 @@ define ('MODX_MANAGER_URL', '');
 define ('MODX_ASSETS_URL', '');
 define ('MODX_CONNECTORS_URL', '');
 
-/* instantiate MODx */
+/* instantiate MODX */
 require_once $sources['build'].'build.config.php';
 require_once MODX_CORE_PATH . 'model/modx/modx.class.php';
 $modx= new modX();

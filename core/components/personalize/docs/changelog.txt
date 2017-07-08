@@ -46,7 +46,7 @@ Personalize 1.0.1
  - Added Build
  - Reorganized for Git
  - Revolution Transport Package created
- - MODx Revolution version
+ - MODX Revolution version
 
 Ancient History
  - Aug 06, 07 -- replaced 2.0 code with modified version found here

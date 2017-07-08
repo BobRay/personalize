@@ -1,32 +1,18 @@
-Personalize Snippet for MODx Revolution
+Personalize Snippet for MODX Revolution
 =======================================
 
-**Revolution Author:** Bob Ray [Bob's Guides](http://bobsguides.com)
-**Date:**   01/10/2011
+**Revolution Author:** Bob Ray [Bob's Guides](https://bobsguides.com)
 
-**Documentation:** See tutorial at [Bob's Guides](http://bobsguides.com/personalize-tutorial.html)
+**Documentation:** See tutorial at [Bob's Guides](https://bobsguides.com/personalize-tutorial.html)
 
-**Bugs and Requests:** [GitHub](https://github.com/BobRay/Personalize/issues)
+**Bugs and Requests:** [Personalize Issues](https://github.com/BobRay/Personalize/issues)
 
-A snippet for MODx Revolution showing one chunk to logged-in users and
+**Questions about using Personalize** [MODX Forums](https://forums.modx.com)
+
+
+A snippet for MODX Revolution showing one chunk to logged-in users and
 another chunk (or nothing) to anonymous users.
 
-##Typical Snippet Call
+You can also use Personalize to show different content to different user groups.
 
-
-     [[!Personalize? &yesChunk=`yesChunk` &noChunk=`noChunk`]]
-
-##Parameters
-
-    &yesChunk  -- (optional) Name of yes chunk or inline HTML
-
-    &noChunk   -- (optional) Name of no chunk or inline HTML
-
-    &ph        -- (optional) Placeholder for user name (will not be available in no chunk)
-
-    &fullName  -- (optional) Use full name instead of username for placeholder
-
-    &firstName -- (optional) Use first name instead of username for placeholder
-
-    &ifIds     -- (optional) Comma-separated list of users to show yesChunk to
 
