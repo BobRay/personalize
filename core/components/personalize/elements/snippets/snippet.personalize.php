@@ -150,6 +150,10 @@ if ($is_logged_in && $ifIds && $inGroups) {
         } else {
             $name = $modx->user->get('username');
         }
+
+        if (empty($name)) {
+            $name = $modx->user->get('username');
+        }
         $modx->setPlaceholder($ph, $name);
     }
 } elseif( !empty ($noChunk) ) {
