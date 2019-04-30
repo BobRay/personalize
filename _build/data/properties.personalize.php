@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Default properties for the QuickEmail snippet
+ * Default properties for the Personalize snippet
  * @author Bob Ray
  * 1/15/11
  *
- * @package quickemail
+ * @package personalize
  * @subpackage build
  */
 

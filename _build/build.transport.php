@@ -2,7 +2,7 @@
 /**
  * Personalize
  *
- * Copyright 2011-2017 Bob Ray
+ * Copyright 2011-2019 Bob Ray
  * @author Bob Ray <https://bobsguides.com>
  * @author Ryan Thrash
  * @author Shaun McCormick

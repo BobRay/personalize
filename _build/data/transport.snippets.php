@@ -1,10 +1,10 @@
 <?php
 /**
- * Snippet object array for QuickEmail package
+ * Snippet object array for Personalize package
  * @author Bob Ray
  * 1/15/11
  *
- * @package quickemail
+ * @package personalize
  * @subpackage build
  */
 
