@@ -1,5 +1,10 @@
 Changelog for Personalize.
 
+Personalize 3.7.2
+-----------------
+Fix username fallback for empty fullname
+Minor bugfixes
+
 Personalize 3.7.1-pl
 -----------------
 Fix bug with First Name option
