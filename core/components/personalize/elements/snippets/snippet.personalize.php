@@ -40,20 +40,19 @@
  *    @property fullName boolean (optional) Use full name
  *        instead of username in placeholder
  *
- *    @property ifIds string (optional) comma separated 
+ *    @property ifIds string (optional) comma separated
  *        list of users ids; yesChunk will only be shown
  *        to users in the list
  *
- *    @property allowedGroups string (optional) comma separated 
- *        list of allowed groups; yesChunk will only only shows 
- *        users are in one of these groups
+ *    @property allowedGroups string (optional) comma separated
+ *        list of allowed groups; yesChunk will only show for
+ *        users who are in one of these groups
  *
  *    @property context (optional) context the user must be
- *        logged in to to see the yesChunk; defaults to
+ *        logged in to see the yesChunk; defaults to
  *        current context.
- *
- *
  */
+
 /* Personalize Snippet for Revolution */
 
 /* ::::::::::::::::::::::::::::::::::::::::
@@ -81,17 +80,17 @@
  * the second to other users.
  *
  * ADDED in 3.3.1 by Vasia123:
- *    
+ *
  *    1. &noChunk=`@CODE:<b>Please login!</b>` - inline snippets
  *    2. &ifIds=`1,3` - additional check for users ids. yesChunk will
  *         only be shown to logged-in users in the list.
- *    
+ *
  * ADDED in 3.6.0 by Vasia123:
- *    
+ *
  *    1. &allowedGroups=`Editor,Administrator` - check if user is
  *       in any allowed group
- *    
- *    
+ *
+ *
  * Placeholder [[+name]] will show the user's name in the yesChunk or
  * elsewhere on the page.
  *
@@ -124,7 +123,7 @@ $is_logged_in = $modx->user->hasSessionContext($context);
 $ifIds = array_filter(array_map('trim',explode(',',$ifIds)));
 $ifIds = (!empty($ifIds)) ? in_array($modx->user->get('id'), $ifIds) : true;
 
-// Set $groups to true is use in in allowed group or $groups is not set
+// Set $inGroups to true if &allowedGroups property is empty or not set
 $groups = array_filter(array_map('trim',explode(',',$allowedGroups)));
 if (!empty($groups)) {
     $inGroups = false;
