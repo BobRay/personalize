@@ -2,10 +2,10 @@
 
 <h3>Installing Personalize for MODX Revolution</h3>
 <p>
-Go to System | Package Management on the main menu in the MODX Manager and click on the "Download Extras" button. That will take you to the Revolution Repository (AKA Web Transport Facility). Put Personalize in the search box and press Enter. Click on the "Download" button, and when it changes to "Downloaded," click on the "Finish" button. That should bring you back to your Package Management grid. Click on the "Install" button next to Personalize in the grid. The Personalize snippet should now be installed.</p>
+Go to Extras -> Installer on the main menu in the MODX Manager and click on the "Download Extras" button. That will take you to the Revolution Repository. Put Personalize in the search box and press Enter. Click on the "Download" button, and when it changes to "Downloaded," click on the "Finish" button. That should bring you back to your Package Management grid. Click on the "Install" button next to Personalize in the grid. The Personalize snippet should now be installed.</p>
         
 <h3>Usage</h3>
-<p>Strictly speaking, none of the properties are required. Typically you will set the <code>&yesChunk</code> and <code>&noChunk</code> properties. If you just want to set the placeholder, however, you can leave them out and just set the <code>&ph</code> property. In order to have anything appear in place of the snippet tag, though, you need to create the <code>
+<p>Strictly speaking, none of the properties are required. Typically, you will set the <code>&yesChunk</code> and <code>&noChunk</code> properties. If you just want to set the placeholder, however, you can leave them out and just set the <code>&ph</code> property. In order to have anything appear in place of the snippet tag, though, you need to create the <code>
     yesChunk</code> and (optionally) the noChunk chunks and specify their names in the snippet tag. As of Personalize 3.4.0, the <code>&noChunk</code> property is optional. If you leave out the <code>&noChunk</code> property, nothing will be shown to not-logged-in users.</p>
 
 <pre class="brush: php; toolbar: false;"><fixedpre>
