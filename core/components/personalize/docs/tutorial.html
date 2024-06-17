@@ -1,9 +1,11 @@
 <p>It's common to want to treat logged-in users differently than anonymous visitors. The Personalize snippet will show one chunk to logged-in users and another to all others.</p>
 
+<p>[Updated for MODX 3 and PHP 8]</p>
+
 <h3>Installing Personalize for MODX Revolution</h3>
 <p>
 Go to Extras -> Installer on the main menu in the MODX Manager and click on the "Download Extras" button. That will take you to the Revolution Repository. Put Personalize in the search box and press Enter. Click on the "Download" button, and when it changes to "Downloaded," click on the "Finish" button. That should bring you back to your Package Management grid. Click on the "Install" button next to Personalize in the grid. The Personalize snippet should now be installed.</p>
-        
+
 <h3>Usage</h3>
 <p>Strictly speaking, none of the properties are required. Typically, you will set the <code>&yesChunk</code> and <code>&noChunk</code> properties. If you just want to set the placeholder, however, you can leave them out and just set the <code>&ph</code> property. In order to have anything appear in place of the snippet tag, though, you need to create the <code>
     yesChunk</code> and (optionally) the noChunk chunks and specify their names in the snippet tag. As of Personalize 3.4.0, the <code>&noChunk</code> property is optional. If you leave out the <code>&noChunk</code> property, nothing will be shown to not-logged-in users.</p>
@@ -86,10 +88,10 @@ property lets you specify the names of groups the user must belong to in order t
 <code>&noChunk</code> property).</p>
 
 <h3>Combining Options</h3>
-        
+
 <p>Here's what happens if you use the various selection properties alone or together:</p>
-        
-<ul>        
+
+<ul>
 <li>If you use the snippet without the <code>&ifIds</code> and <code>&allowedGroups</code> properties, any logged-in user will see the <code>yesChunk</code>.
 
 <li>If you use the <code>&ifIds</code> property alone, only logged-in users who are in the ID list will see the <code>yesChunk</code>.</li>
@@ -99,7 +101,7 @@ property lets you specify the names of groups the user must belong to in order t
 <li>If you use *both* the <code>&ifIds</code> and <code>&allowedGroups</code> properties, only logged in users who meet both criteria will see the <code>yesChunk</code>.</li>
 
 </ul>
-        
+
 
 <h3>Personalize Properties</h3>
 <table class="properties">
@@ -158,6 +160,3 @@ property lets you specify the names of groups the user must belong to in order t
 <p>Remember that when you are previewing a page from the Manager, you are not logged in to any front-end context, so Personalize should show you the <code>noChunk</code> and the placeholder will not be set. If you are bouncing back and forth between the Manager and the front end, however, some versions of MODX can get confused about where you are logged in, so it's best to test the snippet using another browser where you're not logged in to the Manager.</p>
 
 <p>&nbsp;</p>
-
-
- 

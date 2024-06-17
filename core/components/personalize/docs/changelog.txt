@@ -1,5 +1,10 @@
 Changelog for Personalize.
 
+Personalize 3.7.3
+-----------------
+Updates for MODX 3 and PHP 8
+Updated comments and docs
+
 Personalize 3.7.2
 -----------------
 Fix username fallback for empty fullname
@@ -58,6 +63,3 @@ Ancient History
  - Aug 03, 06 -- added placeholder for username
  - Jul 19, 06 -- hacked by kudo to output chunks
  - Dec 01, 05 -- initial release - Ryan Thrash
-
-
-
