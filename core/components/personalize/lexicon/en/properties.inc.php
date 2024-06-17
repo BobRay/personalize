@@ -2,8 +2,8 @@
 /**
  * Personalize
  *
- * Copyright 2010-2019 Bob Ray <https://bobsguides.com>
- * 1/16/2011
+ * Copyright 2010-2024 Bob Ray <https://bobsguides.com>
+ * Created 1/16/2011
  *
  * Personalize is free software; you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the Free

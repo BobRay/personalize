@@ -2,7 +2,8 @@
 /**
  * Snippet object array for Personalize package
  * @author Bob Ray
- * 1/15/11
+ * @copyright 2015-2024 Bob Ray
+ * @created 1/15/11
  *
  * @package personalize
  * @subpackage build
