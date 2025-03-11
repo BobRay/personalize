@@ -127,8 +127,18 @@ $ifIds = (!empty($ifIds)) ? in_array($modx->user->get('id'), $ifIds) : true;
 $groups = array_filter(array_map('trim',explode(',',$allowedGroups)));
 if (!empty($groups)) {
     $inGroups = false;
+
+    // Get all group memberships of user
+    $memberGroups = $modx->user->getMany('UserGroupMembers', array('member' => $modx->user->get('id')));
+    $memberships = array();     
+    foreach($memberGroups as $memberGroup) {
+        $groupinfo = $memberGroup->getOne('UserGroup');
+        $memberships[] = $groupinfo->get('name');
+    } 
+
     foreach($groups as $group) {
-        if ($modx->user->isMember($group)) $inGroups = true;
+    // Get all group memberships of user
+	if (in_array($group, $memberships)) $inGroups = true;
     }
 } else {
     $inGroups = true;
