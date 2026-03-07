@@ -1,5 +1,9 @@
 Changelog for Personalize.
 
+Personalize 3.7.4
+-----------------
+Fix issue with allowedGroups in MODX 3 -- thanks to karamble
+
 Personalize 3.7.3
 -----------------
 Updates for MODX 3 and PHP 8
